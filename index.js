@@ -147,7 +147,7 @@ function renderStatus(phase) {
   const wrap = document.getElementById('status');
   if (phase == 'initial') {
     const h1 = document.createElement('h1');
-    h1.textContent = 'Opening cases🤔';
+    h1.textContent = 'Opening cases(see console for winner)🤔';
     wrap.append(h1);
   }
   if (phase == 'finish') {
