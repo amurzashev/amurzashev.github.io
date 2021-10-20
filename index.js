@@ -30,9 +30,6 @@ async function loadData() {
 ////////////////////////////////////////////////////////////////////////////
 
 const INITIAL_TIME = 8000;
-const WINNER_PICK_TIME = 3000;
-const TOTAL_TIME = INITIAL_TIME + WINNER_PICK_TIME;
-const RANDOM_WINNER_X = Math.floor(Math.random() * 24) * 10;;
 
 function spin(elapsed) {
   const itemsWrap = document.getElementById('itemsWrap');
