@@ -42,6 +42,18 @@ function spin(elapsed) {
   itemsWrap.style.transform = `translateX(-${x}px)`;
 }
 
+function spinFromTo(from, to, duration) {
+  const itemsWrap = document.getElementById('itemsWrap');
+  itemsWrap.animate([
+    { transform: `translateX(-${from}px)` }, 
+    { transform: `translateX(-${to}px)` }
+  ], { 
+    duration,
+    easing: 'ease-out'
+  });
+  itemsWrap.style.transform = `translateX(-${to}px)`;
+}
+
 /**
  * Create card item element and return it
  *
@@ -59,23 +71,9 @@ function winnerPickSpin(winnerId, items, elapsed) {
     console.log('Stopping on winner now...');
     const duration = 2000;
     const randomWinnerPosition = winnerCenterPosition + randomIntFromInterval(-120, 120);
-    itemsWrap.animate([
-      { transform: `translateX(-${currentX}px)` }, 
-      { transform: `translateX(-${randomWinnerPosition}px)` }
-    ], { 
-      duration,
-      easing: 'ease-out'
-    });
-    itemsWrap.style.transform = `translateX(-${randomWinnerPosition}px)`;
+    spinFromTo(currentX, randomWinnerPosition, 2000);
     setTimeout(() => {
-      itemsWrap.animate([
-        { transform: `translateX(-${randomWinnerPosition}px)` }, 
-        { transform: `translateX(-${winnerCenterPosition}px)` }
-      ], { 
-        duration: 1000,
-        easing: 'ease-in-out'
-      });
-      itemsWrap.style.transform = `translateX(-${winnerCenterPosition}px)`;
+      spinFromTo(randomWinnerPosition, winnerCenterPosition, 1000);
       setTimeout(() => {
         renderStatus('finish');
       }, 1000);
