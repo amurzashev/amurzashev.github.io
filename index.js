@@ -42,14 +42,14 @@ function spin(elapsed) {
   itemsWrap.style.transform = `translateX(-${x}px)`;
 }
 
-function spinFromTo(from, to, duration) {
+function spinFromTo(from, to, duration, easing) {
   const itemsWrap = document.getElementById('itemsWrap');
   itemsWrap.animate([
     { transform: `translateX(-${from}px)` }, 
     { transform: `translateX(-${to}px)` }
   ], { 
     duration,
-    easing: 'ease-out'
+    easing
   });
   itemsWrap.style.transform = `translateX(-${to}px)`;
 }
@@ -71,9 +71,9 @@ function winnerPickSpin(winnerId, items, elapsed) {
     console.log('Stopping on winner now...');
     const duration = 2000;
     const randomWinnerPosition = winnerCenterPosition + randomIntFromInterval(-120, 120);
-    spinFromTo(currentX, randomWinnerPosition, 2000);
+    spinFromTo(currentX, randomWinnerPosition, 2000, 'ease-out');
     setTimeout(() => {
-      spinFromTo(randomWinnerPosition, winnerCenterPosition, 1000);
+      spinFromTo(randomWinnerPosition, winnerCenterPosition, 1000, 'ease-in-out');
       setTimeout(() => {
         renderStatus('finish');
       }, 1000);
