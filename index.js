@@ -42,6 +42,14 @@ function spin(elapsed) {
   itemsWrap.style.transform = `translateX(-${x}px)`;
 }
 
+/**
+ * Create spin animation from x to x with duration and easing applied
+ *
+ * @param {number} from
+ * @param {number} to
+ * @param {number} duration
+ * @param {string} easing
+ */
 function spinFromTo(from, to, duration, easing) {
   const itemsWrap = document.getElementById('itemsWrap');
   itemsWrap.animate([
