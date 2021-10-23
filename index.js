@@ -27,8 +27,6 @@ async function loadData() {
   return data;
 };
 
-////////////////////////////////////////////////////////////////////////////
-
 const INITIAL_TIME = 8000;
 
 function spin(elapsed) {
@@ -136,9 +134,7 @@ function renderCarousel(visualItems, originalItems) {
   const winner = originalItems[Math.floor(Math.random() * originalItems.length)];
   console.log(`winner is ${winner.title_en}`);
   initializeSpin(winner.id, originalItems);
-}
-
-////////////////////////////////////////////////////////////////////////////
+};
 
 /**
  * Render status
